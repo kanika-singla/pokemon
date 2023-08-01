@@ -1,0 +1,2 @@
+mongoimport --uri mongodb+srv://import_user:admin@sandbox.zdiry.mongodb.net/pokemon --collection pokemon --type json --file pokemons
+.json
