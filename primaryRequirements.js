@@ -28,7 +28,18 @@ const aggregationPipeline = [
     },
     {
         '$project': {
-            'name': 1,
+            'name': {
+              '$concat': [
+                  { "$toUpper": { "$substrCP": ["$name", 0, 1] } }, 
+                  {                                                           
+                      "$substrCP": [
+                          "$name",
+                          1,
+                          { "$subtract": [{ "$strLenCP": "$name" }, 1 ]}
+                      ] 
+                  }
+              ]
+            },
             'id': 1,
             'base_experience': 1,
             'weight': 1,
