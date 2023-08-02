@@ -8,14 +8,14 @@ app.use(express.json());
 
 app.get('/dumpPokemonDatatoJSONFiles', async function(req, res) {
   let allPokemons =await getAllPokemons();
-  fs.writeFileSync('./data/mongo_input/pokemons.json', JSON.stringify(allPokemons));
+  fs.writeFileSync('./data/mongo_input/pokemons1500.json', JSON.stringify(allPokemons));
   res.json(JSON.stringify(allPokemons));
 });
 
 app.get('/prepareDataForInvestors', async function(req, res) {
   let filteredPokemons =await prepareData();
   fs.writeFileSync('./data/investor/filteredPokemons.json', JSON.stringify(filteredPokemons));
-  res.json(filteredPokemons);
+  res.json(`Pokemons matching criteria:${filteredPokemons.length}`);
 });
 
 app.listen(5000, () => {
