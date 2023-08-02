@@ -1,6 +1,6 @@
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
-const uri = "mongodb+srv://import_user:<PASSWORD>@<SANDBOX>.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://import_user:admin@sandbox.zdiry.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -15,9 +15,14 @@ const aggregationPipeline = [
     {
       '$match': {
         'game_indices.version.name': {
-            '$in': [
-            'red', 'leafgreen', 'blue', 'green', 'white'
-          ]
+            '$in': ['red', 'leafgreen', 'blue', 'green', 'white']
+        }
+      }
+    },
+    {
+      '$match': {
+        'types.slot': {
+            '$in': [1, 2]
         }
       }
     },
@@ -29,7 +34,9 @@ const aggregationPipeline = [
             'weight': 1,
             'height': 1 ,
             'order': 1,
-            'game_indices.version.name': 1
+            'game_indices.version.name': 1,
+            'types.slot': 1,
+            'types.type.name': 1
         }
     }
   ];
