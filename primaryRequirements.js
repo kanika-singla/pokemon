@@ -1,6 +1,10 @@
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
-const uri = "mongodb+srv://import_user:admin@sandbox.zdiry.mongodb.net/?retryWrites=true&w=majority";
+import {} from 'dotenv/config';
+const mongoUser = process.env.MONGO_USER;
+const mongoPassword = process.env.MONGO_PASSWORD;
+const mongoServer = process.env.MONGO_SERVER;
+const uri = `mongodb+srv://${mongoUser}:${mongoPassword}@${mongoServer}/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -10,6 +14,16 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+
+//Aggregation Pipeline to query based on the primary requirements in the case study
+// 1. The name, id, base_experience, weight, height and order of all Pokémon that 
+// appear in the any of the games red, blue, leafgreen or white.
+// 2. The name of the slot 1 (and if available 2) type of each of the Pokémon's types.
+// 3. The Body Mass Index of the Pokémon (hint: The formula for BMI is weight (kg) / height (m2 ))
+// 4. The first letter of names of the Pokémon should be capitalized.
+// 5. The url of the front_default sprite.
+// 6. Prepare the data in an appropriate data format. Consider if it should be multiple or a 
+// single file.
 
 const aggregationPipeline = [
     {
@@ -64,6 +78,6 @@ const aggregationPipeline = [
   const pokemonCollection = client.db('pokemon').collection('pokemon');
   const cursor = pokemonCollection.aggregate(aggregationPipeline);
   const result = await cursor.toArray();
-  console.log(JSON.stringify(result));
-  console.log(result.length);
+  //console.log(JSON.stringify(result));
+  console.log(`Total pokemons: ${result.length}`);
   await client.close();
