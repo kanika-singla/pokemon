@@ -1,17 +1,12 @@
 import axios from 'axios';
 
-
 async function getPokemon(url) {
   let pokemon = await axios.get(url);
-  /*let pokemonData1 ={};
-  for (let index = 0; index < pokemonProperties.length; index++) {
-    pokemonData1[pokemonProperties[index]] = pokemon['data'][pokemonProperties[index]];
-  }*/
   return pokemon['data'];
 }
 
 export async function getAllPokemons() {
-  let start_time = new Date().getTime();
+  let startTime = new Date().getTime();
   let promises = [];
 
   console.log(new Date().getTime());
@@ -23,8 +18,8 @@ export async function getAllPokemons() {
       promises.push(getPokemon(pokemon.url));
     }
   const data = await Promise.all(promises);
-  let end_time= new Date().getTime();
-  console.log('time taken to get ',totalPokemons, ':', (end_time-start_time)/1000, ' seconds');
+  let endTime= new Date().getTime();
+  console.log('time taken to get ',totalPokemons, ':', (endTime-startTime)/1000, ' seconds');
   
   return data;
 }
