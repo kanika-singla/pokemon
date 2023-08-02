@@ -1,11 +1,11 @@
-import axios from 'axios';
+const axios = require('axios');
 
 async function getPokemon(url) {
   let pokemon = await axios.get(url);
   return pokemon['data'];
 }
 
-export async function getAllPokemons() {
+async function getAllPokemons() {
   let startTime = new Date().getTime();
   let promises = [];
 
@@ -23,3 +23,5 @@ export async function getAllPokemons() {
   
   return data;
 }
+
+module.exports = { getAllPokemons }

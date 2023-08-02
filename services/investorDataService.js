@@ -1,17 +1,17 @@
 
-import { MongoClient, ServerApiVersion } from 'mongodb';
-import {} from 'dotenv/config';
+const mongodb = require('mongodb');
+require('dotenv').config();
 
-export async function prepareData() {
+async function prepareData() {
   const mongoUser = process.env.MONGO_USER;
   const mongoPassword = process.env.MONGO_PASSWORD;
   const mongoServer = process.env.MONGO_SERVER;
   const uri = `mongodb+srv://${mongoUser}:${mongoPassword}@${mongoServer}/?retryWrites=true&w=majority`;
 
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-  const client = new MongoClient(uri, {
+  const client = new mongodb.MongoClient(uri, {
     serverApi: {
-      version: ServerApiVersion.v1,
+      version: mongodb.ServerApiVersion.v1,
       strict: true,
       deprecationErrors: true,
     }
@@ -85,3 +85,5 @@ export async function prepareData() {
     await client.close();
     return filteredPokemons;
 }
+
+module.exports = { prepareData }
