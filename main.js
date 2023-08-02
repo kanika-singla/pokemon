@@ -1,7 +1,7 @@
 import express from 'express';
 import fs from 'fs';
-import { getAllPokemons } from './dumpPokemonDataService.js';
-import { prepareData } from './primaryRequirements.js';
+import { getAllPokemons } from './services/dumpPokemonDataService.js';
+import { prepareData } from './services/prepareDataService.js';
 
 var app = express();
 app.use(express.json());
