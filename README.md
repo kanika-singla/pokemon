@@ -20,9 +20,13 @@ This repository reads [PokeAPI](https://pokeapi.co/) and serves the data to Inve
 4. To retrieve data prepared based on above rules, open endpoint: localhost:5000/prepareDataForInvestors
 
 ### Architecture Diagram
-![alt text](https://github.com/kanika-singla/pokemon/blob/main/images/pokemon_api.png?raw=true)
+![alt text](https://github.com/kanika-singla/pokemon/blob/main/architecture/pokemon_api.png?raw=true)
+
+### Architecture for Update Notifications
+![alt text](https://github.com/kanika-singla/pokemon/blob/main/architecture/pokemon_update_notifications.png?raw=true)
 
 ### What is missing?
 * Deployment of nodejs application to AWS
 * Storing files to S3
 * Uploaded partial data from PokeAPI to MongoDB
+* Dashboard for showing pokemons with thumbnail and detail link
