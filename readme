@@ -1,2 +1,1 @@
-mongoimport --uri mongodb+srv://import_user:PASSWORD@sandbox.zdiry.mongodb.net/pokemon --collection pokemon --type json --file pokemons
-.json --jsonArray
+![alt text](https://github.com/kanika-singla/pokemon/blob/main/images/pokemon_api.png?raw=true)
