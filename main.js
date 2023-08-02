@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const dumpPokemonDataService = require('./services/dumpPokemonDataService.js');
 const investorDataService = require('./services/investorDataService.js');
+const pokemonListService = require('./services/pokemonListService.js');
 const path = require('path');
 
 var app = express();
@@ -13,15 +14,28 @@ app.get('/', function (req, res) {
 
 app.get('/dumpPokemonDatatoJSONFiles', async function(req, res) {
   let allPokemons =await dumpPokemonDataService.getAllPokemons();
-  fs.writeFileSync('./data/mongo_input/pokemons1500.json', JSON.stringify(allPokemons));
-  res.json(JSON.stringify(allPokemons));
+  const filePokemons = './data/mongo_input/pokemons500.json';
+  fs.writeFileSync(filePokemons, JSON.stringify(allPokemons));
+  res.download(filePokemons);
 });
 
 app.get('/getDataForInvestors', async function(req, res) {
   let filteredPokemons =await investorDataService.prepareData();
-  const fileName = './data/investor/filteredPokemons.json';
-  fs.writeFileSync(fileName, JSON.stringify(filteredPokemons));
-  res.download(fileName);
+  const fileInvestors = './data/investor/filteredPokemons.json';
+  fs.writeFileSync(fileInvestors, JSON.stringify(filteredPokemons));
+  res.download(fileInvestors);
+});
+
+app.get('/listPokemons', async function(req, res) {
+  let listPokemons =await pokemonListService.listPokemons();
+  res.send(listPokemons);
+});
+
+app.get('/pokemon/:id', async function(req, res) {
+  console.log("id = ", req.params.id);
+  let pokemonData =await pokemonListService.getPokemon(req.params.id);
+  res.header("Content-Type",'application/json');
+  res.send(JSON.stringify(pokemonData, null, 4));
 });
 
 app.listen(5000, () => {

@@ -10,7 +10,7 @@ async function getAllPokemons() {
   let promises = [];
 
   console.log(new Date().getTime());
-  let pokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=500&offset=1000');
+  let pokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=500');
     const totalPokemons = pokemons.data.count;
     console.log(totalPokemons);
     for (let index = 0; index < pokemons.data.results.length; index++) {

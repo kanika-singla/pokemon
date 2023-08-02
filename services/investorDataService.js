@@ -71,7 +71,8 @@ async function prepareData() {
               {
                 '$multiply': ["$height", 0.01]
               }]},
-              'sprites.front_default': 1
+              'sprites.front_default': 1,
+              '_id': 0
           }
       }
     ];
