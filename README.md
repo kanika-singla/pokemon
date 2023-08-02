@@ -1,7 +1,7 @@
 ## Gotta Process 'Em all
 
 ### Problem Statement
-This repository reads ![PokeAPI](https://pokeapi.co/) and prepares the data based on following rules:
+This repository reads [PokeAPI](https://pokeapi.co/) and prepares the data based on following rules:
 1. The name, id, base_experience, weight, height and order of all Pokémon that appear in the any of the games red, blue, leafgreen or white.
 2. The name of the slot 1 (and if available 2) type of each of the Pokémon's types.
 3. The Body Mass Index of the Pokémon (hint: The formula for BMI is weight (kg) / height (m2))
@@ -12,7 +12,7 @@ This repository reads ![PokeAPI](https://pokeapi.co/) and prepares the data base
 ### Try it out!
 1. Install nodejs
 2. Clone github repository
-3. Run below commands
+3. Run below commands from root directory:
 ```
     npm i
     npm start
@@ -21,3 +21,7 @@ This repository reads ![PokeAPI](https://pokeapi.co/) and prepares the data base
 
 ### Architecture Diagram
 ![alt text](https://github.com/kanika-singla/pokemon/blob/main/images/pokemon_api.png?raw=true)
+
+### What is missing?
+* Deployment of nodejs application to AWS
+* Storing files to S3
