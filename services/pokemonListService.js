@@ -17,13 +17,12 @@ const client = new mongodb.MongoClient(uri, {
 
 async function listPokemons() {
   const pokemonCollection = client.db("pokemon").collection("pokemon");
-  const cursor = pokemonCollection.find({}).project({name:1,id:1,'sprites.front_default':1, _id: 0}).limit(5);
+  const cursor = pokemonCollection.find({}).project({name:1,id:1,'sprites.front_default':1, _id: 0}).limit(50);
   const pokemonArrays = await cursor.toArray();
   var htmlText='';
   for(var i=0;i<pokemonArrays.length;i++) {
-    htmlText += `<li><a href="http://localhost:5000/pokemon/${pokemonArrays[i]['id']}">${pokemonArrays[i]['name']}</a></li>`;
+    htmlText += `<li><a href="http://localhost:5000/pokemon/${pokemonArrays[i]['id']}">${pokemonArrays[i]['name']}<img src="${pokemonArrays[i]['sprites']['front_default']}"></a></li>`;
   }
-  console.log(htmlText);
   return htmlText;
 }
 
