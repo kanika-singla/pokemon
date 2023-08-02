@@ -55,6 +55,7 @@ const aggregationPipeline = [
             {
               '$multiply': ["$height", 0.01]
             }]},
+            'sprites.front_default': 1
         }
     }
   ];
