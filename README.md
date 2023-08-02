@@ -1,7 +1,7 @@
 ## Gotta Process 'Em all
 
 ### Problem Statement
-This repository reads [PokeAPI](https://pokeapi.co/) and prepares the data based on following rules:
+This repository reads [PokeAPI](https://pokeapi.co/) and serves the data to Investor based on following rules:
 1. The name, id, base_experience, weight, height and order of all Pokémon that appear in the any of the games red, blue, leafgreen or white.
 2. The name of the slot 1 (and if available 2) type of each of the Pokémon's types.
 3. The Body Mass Index of the Pokémon (hint: The formula for BMI is weight (kg) / height (m2))
@@ -25,3 +25,4 @@ This repository reads [PokeAPI](https://pokeapi.co/) and prepares the data based
 ### What is missing?
 * Deployment of nodejs application to AWS
 * Storing files to S3
+* Uploaded partial data from PokeAPI to MongoDB
