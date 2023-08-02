@@ -36,7 +36,14 @@ const aggregationPipeline = [
             'order': 1,
             'game_indices.version.name': 1,
             'types.slot': 1,
-            'types.type.name': 1
+            'types.type.name': 1,
+            'bmi': {
+              '$divide': [ {
+              '$multiply': ["$weight", 0.1]
+            },
+            {
+              '$multiply': ["$height", 0.01]
+            }]},
         }
     }
   ];
