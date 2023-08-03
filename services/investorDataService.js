@@ -61,7 +61,7 @@ async function prepareData() {
               'weight': 1,
               'height': 1 ,
               'order': 1,
-              'game_indices.version.name': 1,
+              //'game_indices.version.name': 1,
               'types.slot': 1,
               'types.type.name': 1,
               'bmi': {

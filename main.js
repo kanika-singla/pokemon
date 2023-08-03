@@ -4,6 +4,7 @@ const dumpPokemonDataService = require('./services/dumpPokemonDataService.js');
 const investorDataService = require('./services/investorDataService.js');
 const pokemonListService = require('./services/pokemonListService.js');
 const path = require('path');
+const jsonTocsv = require('json2csv');
 
 var app = express();
 app.use(express.json());
@@ -21,8 +22,8 @@ app.get('/dumpPokemonDatatoJSONFiles', async function(req, res) {
 
 app.get('/getDataForInvestors', async function(req, res) {
   let filteredPokemons =await investorDataService.prepareData();
-  const fileInvestors = './data/investor/filteredPokemons.json';
-  fs.writeFileSync(fileInvestors, JSON.stringify(filteredPokemons));
+  const fileInvestors = './data/investor/filteredPokemons.csv';
+  fs.writeFileSync(fileInvestors, jsonTocsv.parse(filteredPokemons));
   res.download(fileInvestors);
 });
 
