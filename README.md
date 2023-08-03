@@ -12,12 +12,21 @@ This repository reads [PokeAPI](https://pokeapi.co/) and serves the data to Inve
 ### Try it out!
 1. Install nodejs
 2. Clone github repository
-3. Run below commands from root directory:
+3. Create .env file on root folder. example
+```
+    MONGO_USER=
+    MONGO_PASSWORD=
+    MONGO_SERVER=
+```
+4. After saving .env, run below commands from root directory:
 ```
     npm i
     npm start
 ```
-4. To retrieve data prepared based on above rules, open endpoint: localhost:5000/prepareDataForInvestors
+5. On root page: http://localhost:5000/, available routes are displayed:
+    * Download data from PokeAPI
+    * Get data for investors (in csv format)
+    * List pokemons and their details
 
 ### Architecture Diagram
 ![alt text](https://github.com/kanika-singla/pokemon/blob/main/architecture/pokemon_api.png?raw=true)
@@ -27,6 +36,4 @@ This repository reads [PokeAPI](https://pokeapi.co/) and serves the data to Inve
 
 ### What is missing?
 * Deployment of nodejs application to AWS
-* Storing files to S3
-* Uploaded partial data from PokeAPI to MongoDB
-* Dashboard for showing pokemons with thumbnail and detail link
+* Interactable dashboard
