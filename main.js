@@ -22,7 +22,7 @@ app.get('/dumpPokemonDatatoJSONFiles', async function(req, res) {
 
 app.get('/getDataForInvestors', async function(req, res) {
   let filteredPokemons =await investorDataService.prepareData();
-  const fileInvestors = './data/investor/filteredPokemons.csv';
+  const fileInvestors = './data/investor/primaryRequiredData.csv';
   fs.writeFileSync(fileInvestors, jsonTocsv.parse(filteredPokemons));
   res.download(fileInvestors);
 });

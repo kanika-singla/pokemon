@@ -62,8 +62,7 @@ async function prepareData() {
               'height': 1 ,
               'order': 1,
               //'game_indices.version.name': 1,
-              'types.slot': 1,
-              'types.type.name': 1,
+              'slot_types': "$types.type.name",
               'bmi': {
                 '$divide': [ {
                 '$multiply': ["$weight", 0.1]
@@ -71,7 +70,7 @@ async function prepareData() {
               {
                 '$multiply': ["$height", 0.01]
               }]},
-              'sprites.front_default': 1,
+              'front_default_url': "$sprites.front_default",
               '_id': 0
           }
       }
